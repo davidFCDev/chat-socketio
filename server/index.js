@@ -4,15 +4,13 @@ import morgan from "morgan";
 import { Server as SocketServer } from "socket.io";
 import { resolve, dirname } from "path";
 
+import { PORT } from "./config.js";
 import cors from "cors";
 
 // Initializations
 const app = express();
 const server = http.createServer(app);
 const io = new SocketServer(server, {
-  // cors: {
-  //   origin: "http://localhost:3000",
-  // },
 });
 
 // Middlewares
@@ -32,5 +30,5 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(4000);
-console.log(`server on port 4000`);
+server.listen(PORT);
+console.log(`server on port ${PORT}`);
